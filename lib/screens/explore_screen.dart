@@ -15,13 +15,12 @@ class ExploreScreen extends StatelessWidget {
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           final data = snapshot.data as ExploreData;
-          final recipes = data.todayRecipes;
           return ListView(
             scrollDirection: Axis.vertical,
             children: [
-              TodayRecipeListView(key: key, recipes: recipes),
+              TodayRecipeListView(key: key, recipes: data.todayRecipes),
               const SizedBox(height: 16),
-              Container(height: 400, color: Colors.green)
+              FriendPostListView(friendPosts: data.friendPosts),
             ],
           );
         } else {
